@@ -1,0 +1,13 @@
+.invalid{
+  border-color: red;
+  border-style: solid;
+
+}
+
+span{
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: auto;
+}

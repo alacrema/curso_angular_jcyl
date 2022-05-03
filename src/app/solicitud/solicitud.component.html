@@ -1,2 +1,19 @@
-<p> {{solicitud.nombre}}</p>
+<h3>Ejercicio 5</h3>
 
+<div>
+ <p>
+   <span>Nombre:</span>
+<input type="text" id="nombre" value="{{solicitud.nombre}}" (keyup)="cambiarNombre($event)" />
+ </p>
+ <p>
+   &nbsp;
+ </p>
+<p>
+  <span>Apellidos:</span>
+  <input type="text" id="nombre"  value="{{solicitud.apellidos}}" (keyup)="cambiarApellidos($event)" />
+<p>
+  &nbsp;
+</p>
+<input type="button" (click)="eliminar()" value="Eliminar" />
+<input type="button" (click)="modificar(solicitud)" value="Modificar campos" />
+<div>

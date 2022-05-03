@@ -7,13 +7,54 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SolicitudComponent implements OnInit {
 
-  solicitud = {nombre: "Marta"};
+  solicitud = {nombre: "Marta", apellidos: "Al\u00e1iz Crespo", numeroAleatorio: "0"};
+  invalido = false;
+  fondo = 'yellow';
 
   constructor() {
+    console.log('llamada al constructor');
+
     setInterval(() => {
-      this.solicitud.nombre = '' + Math.random();
-      }, 2000)
+      let numAleatorio = Math.random();
+      this.solicitud.numeroAleatorio = '' + numAleatorio;
+      //this.solicitud.nombre = '' + numAleatorio
+      if(numAleatorio>0.5){
+        this.invalido = true;
+      }else{
+        this.invalido = false;
+      }
+
+    }, 2000)
+
+
+
+
    }
+
+   eliminar(){
+     console.log("==> Llamada al método eliminar");
+     this.solicitud = {nombre: "", apellidos: "", numeroAleatorio: "0"};
+     console.log("solicitud.nombre = " + this.solicitud.nombre);
+     console.log("solicitud.apellidos = " + this.solicitud.apellidos);
+   }
+
+   modificar(solicitud: {nombre: string, apellidos: string} ){
+    console.log("solicitud.nombre = " + this.solicitud.nombre);
+    console.log("solicitud.apellidos = " + this.solicitud.apellidos);
+  }
+
+  cambiarNombre(event: any)
+  {
+    this.solicitud.nombre = event.target.value;
+    //console.log(event.target.value);
+  }
+
+  cambiarApellidos(event: any)
+  {
+    this.solicitud.apellidos = event.target.value;
+    //console.log(event.target.value);
+  }
+
 
   ngOnInit(): void {
   }
