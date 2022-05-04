@@ -1,19 +1,21 @@
-<h3>Ejercicio 5</h3>
+<h3>Ejercicio 4</h3>
 
+<span [style.color]="+solicitud.numeroAleatorio >0.5 ? 'red' : 'blue' ">{{solicitud.numeroAleatorio}}</span>
+<span [style.color]="+solicitud.numeroAleatorio >0.5 ? 'red' : 'blue' ">{{solicitud.numeroAleatorio}}</span>
+<span [ngClass]="{'invalid': invalido}">{{solicitud.numeroAleatorio}}</span>
 <div>
  <p>
    <span>Nombre:</span>
-<input type="text" id="nombre" value="{{solicitud.nombre}}" (keyup)="cambiarNombre($event)" />
+<span [class.invalid] = "invalido">{{solicitud.nombre}}</span>
  </p>
  <p>
    &nbsp;
  </p>
 <p>
   <span>Apellidos:</span>
-  <input type="text" id="nombre"  value="{{solicitud.apellidos}}" (keyup)="cambiarApellidos($event)" />
+  <span [textContent]="solicitud.apellidos" [style.background-color]="fondo"></span>
 <p>
   &nbsp;
 </p>
-<input type="button" (click)="eliminar()" value="Eliminar" />
-<input type="button" (click)="modificar(solicitud)" value="Modificar campos" />
+
 <div>
