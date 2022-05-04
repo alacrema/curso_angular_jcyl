@@ -18,8 +18,14 @@
   <div *ngIf="getDisabled()">
     La longitud del nombre o los apellidos es inv&aacute;lida. Debe ser igual o superior a 3.
   </div>
-<input type="button" (click)="enviar()" value="Enviar" [disabled]="getDisabled()" />
+<input type="button" (click)="enviar(solicitud)" value="Enviar" [disabled]="getDisabled()" />
 &nbsp;&nbsp;
 <input type="button" (click)="eliminar()" value="Eliminar"  />
 
 <div>
+
+<h2>Listado de solicitudes</h2>
+
+<div *ngFor="let solicitud of solicitudes">
+  {{solicitud.nombre}}&nbsp;{{solicitud.apellidos}}&nbsp;<input type="button" (click)="eliminarSolicitud(solicitud)" value="Eliminar"  />
+</div>

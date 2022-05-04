@@ -7,36 +7,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SolicitudComponent implements OnInit {
 
-  solicitud = {nombre: "Marta", apellidos: "Al\u00e1iz Crespo", numeroAleatorio: "0"};
+  solicitud = {id: 1, nombre: "Marta", apellidos: "Al\u00e1iz Crespo"};
+
+  solicitudes = [{id: 1, nombre: "Marta", apellidos: "Al\u00e1iz Crespo"}, {id: 2, nombre: "Juan", apellidos: "Garcia Lopez"}, {id: 3, nombre: "Ana", apellidos: "Robles Sanz"}];
   invalido = false;
   fondo = 'yellow';
 
   constructor() {
     console.log('llamada al constructor');
 
-    setInterval(() => {
-      let numAleatorio = Math.random();
-      this.solicitud.numeroAleatorio = '' + numAleatorio;
-      //this.solicitud.nombre = '' + numAleatorio
-      if(numAleatorio>0.5){
-        this.invalido = true;
-      }else{
-        this.invalido = false;
-      }
-
-    }, 2000)
-
-
-
-
    }
 
    eliminar(){
      console.log("==> Llamada al método eliminar");
-     this.solicitud = {nombre: "", apellidos: "", numeroAleatorio: "0"};
+     this.solicitud = {id: 0, nombre: "", apellidos: ""};
      console.log("solicitud.nombre = " + this.solicitud.nombre);
      console.log("solicitud.apellidos = " + this.solicitud.apellidos);
    }
+
+   eliminarSolicitud(solicitud: any){
+    console.log("==> Llamada al método eliminar");
+    //this.solicitudes = this.solicitudes.filter(x => x.nombre != solicitud.nombre && x.apellidos != solicitud.apellidos);
+    this.solicitudes = this.solicitudes.filter(x => x.id != solicitud.id);
+    console.log("solicitud.nombre = " + this.solicitud.nombre);
+    console.log("solicitud.apellidos = " + this.solicitud.apellidos);
+  }
 
    modificar(solicitud: {nombre: string, apellidos: string} ){
     console.log("solicitud.nombre = " + this.solicitud.nombre);
@@ -57,7 +52,9 @@ export class SolicitudComponent implements OnInit {
     //console.log(campoApellidos.value);
   }
 
-  enviar(){
+  enviar(solicitud: any){
+    solicitud.id = this.solicitudes.length+1;
+    this.solicitudes.push(solicitud);
     console.log(this.solicitud);
   }
 
