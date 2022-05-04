@@ -43,18 +43,27 @@ export class SolicitudComponent implements OnInit {
     console.log("solicitud.apellidos = " + this.solicitud.apellidos);
   }
 
-  cambiarNombre(event: any)
+  cambiarNombre($event: KeyboardEvent)
   {
-    this.solicitud.nombre = event.target.value;
-    //console.log(event.target.value);
+    const elemento = $event.target as HTMLInputElement;
+    this.solicitud.nombre = elemento.value;
+    //console.log(elemento.value);
   }
 
-  cambiarApellidos(event: any)
+  cambiarApellidos($event: KeyboardEvent)
   {
-    this.solicitud.apellidos = event.target.value;
-    //console.log(event.target.value);
+    const campoApellidos = $event.target as HTMLInputElement;
+    this.solicitud.apellidos = campoApellidos.value;
+    //console.log(campoApellidos.value);
   }
 
+  enviar(){
+    console.log(this.solicitud);
+  }
+
+  getDisabled(){
+    return (this.solicitud.nombre.length<3 || this.solicitud.apellidos.length<3)
+  }
 
   ngOnInit(): void {
   }

@@ -11,3 +11,7 @@ span{
   padding-bottom: 10px;
   width: auto;
 }
+
+.bold{
+  font-weight: bold;
+}

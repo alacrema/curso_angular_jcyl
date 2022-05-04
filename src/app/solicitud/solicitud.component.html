@@ -1,19 +1,24 @@
-<h3>Ejercicio 5</h3>
+<h1>Ejercicio 6: Solicitud de comedor</h1>
+<h2>Nueva solicitud</h2>
 
 <div>
  <p>
-   <span>Nombre:</span>
-<input type="text" id="nombre" value="{{solicitud.nombre}}" (keyup)="cambiarNombre($event)" />
+   <label >Nombre:</label>
+   <br/>
+<input type="text" id="nombre" [value]="solicitud.nombre" (keyup)="cambiarNombre($event)" />
  </p>
  <p>
    &nbsp;
  </p>
 <p>
-  <span>Apellidos:</span>
-  <input type="text" id="nombre"  value="{{solicitud.apellidos}}" (keyup)="cambiarApellidos($event)" />
+  <label>Apellidos:</label>
+  <br/>
+  <input type="text" id="nombre"  [value]="solicitud.apellidos" (keyup)="cambiarApellidos($event)" />
 <p>
   &nbsp;
 </p>
-<input type="button" (click)="eliminar()" value="Eliminar" />
-<input type="button" (click)="modificar(solicitud)" value="Modificar campos" />
+<input type="button" (click)="enviar()" value="Enviar" [disabled]="getDisabled()" />
+&nbsp;&nbsp;
+<input type="button" (click)="eliminar()" value="Eliminar"  />
+
 <div>
