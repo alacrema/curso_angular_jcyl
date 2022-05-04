@@ -14,9 +14,10 @@
   <label>Apellidos:</label>
   <br/>
   <input type="text" id="nombre"  [value]="solicitud.apellidos" (keyup)="cambiarApellidos($event)" />
-<p>
-  &nbsp;
-</p>
+
+  <div *ngIf="getDisabled()">
+    La longitud del nombre o los apellidos es inv&aacute;lida. Debe ser igual o superior a 3.
+  </div>
 <input type="button" (click)="enviar()" value="Enviar" [disabled]="getDisabled()" />
 &nbsp;&nbsp;
 <input type="button" (click)="eliminar()" value="Eliminar"  />
