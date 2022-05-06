@@ -31,7 +31,8 @@
 <h2>Listado de solicitudes</h2>
 
 <div *ngFor="let solicitud of solicitudes">
-  {{solicitud.nombre}}&nbsp;{{solicitud.apellidos}}&nbsp;<input type="button" (click)="eliminarSolicitud(solicitud)" value="Eliminar"  />
+  <app-fila-solicitud [solicitud]="solicitud" (solicitudEliminada)="eliminarSolicitud(solicitud)"></app-fila-solicitud>
+
 </div>
 
 <app-centro></app-centro>
