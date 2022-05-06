@@ -10,7 +10,8 @@
  <p>
    &nbsp;
  </p>
-<p>
+</div>
+<div>
   <label>Apellidos:</label>
   <br/>
   <input type="text" id="nombre"  [value]="solicitud.apellidos" (keyup)="cambiarApellidos($event)" />
@@ -22,7 +23,10 @@
 &nbsp;&nbsp;
 <input type="button" (click)="eliminar()" value="Eliminar"  />
 
-<div>
+</div>
+
+<h2>Centro</h2>
+<app-selector-centro></app-selector-centro>
 
 <h2>Listado de solicitudes</h2>
 
