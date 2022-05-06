@@ -1,3 +1,4 @@
+import { SolicitudService } from './../solicitud.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,12 +10,13 @@ export class SolicitudComponent implements OnInit {
 
   solicitud = {id: 1, nombre: "Marta", apellidos: "Al\u00e1iz Crespo"};
 
-  solicitudes = [{id: 1, nombre: "Marta", apellidos: "Al\u00e1iz Crespo"}, {id: 2, nombre: "Juan", apellidos: "Garcia Lopez"}, {id: 3, nombre: "Ana", apellidos: "Robles Sanz"}];
+  solicitudes ; // [{id: 1, nombre: "Marta", apellidos: "Al\u00e1iz Crespo"}, {id: 2, nombre: "Juan", apellidos: "Garcia Lopez"}, {id: 3, nombre: "Ana", apellidos: "Robles Sanz"}];
   invalido = false;
   fondo = 'yellow';
 
-  constructor() {
+  constructor(private solicitudService: SolicitudService) {
     console.log('llamada al constructor');
+    this.solicitudes = solicitudService.getSolicitudes();
 
    }
 
