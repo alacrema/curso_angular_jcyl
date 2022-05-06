@@ -7,14 +7,14 @@ import {Centro} from '../listado-centros/listado-centros.component'
   template: `
   <input (keyup)="buscarCentro($event)" [value] = "centroSeleccionado?.nombre">
     <div *ngFor="let centro of centrosFiltrados">
-      <p (click)="seleccionarCentro(centro)">{{centro.nombre}}</p>
+      <p (click)="seleccionarCentro(centro)">{{centro.nombre | slice: 0: -8}}</p>
     </div>
   `,
   styleUrls: ['./selector-centro.component.css']
 })
 export class SelectorCentroComponent implements OnInit {
 
-  centros: Centro[] = [{nombre: "Fernando de Rojas"}, {nombre: "Elvira Lindo"}, {nombre: "San Jose"}, {nombre: "Martin Baro"}];
+  centros: Centro[] = [{nombre: "Fernando de Rojas 47000001"}, {nombre: "Elvira Lindo 47000002"}, {nombre: "San Jose 47000003"}, {nombre: "Martin Baro 47000004"}];
   centrosFiltrados: Centro[] = [];
 
   @Output()
@@ -27,7 +27,7 @@ export class SelectorCentroComponent implements OnInit {
 
   buscarCentro($event: KeyboardEvent){
       let target = $event.target as HTMLInputElement;
-      this.centrosFiltrados = this.centros.filter(centro => centro.nombre?.toLocaleLowerCase().includes(target.value.toLowerCase()));
+      this.centrosFiltrados = this.centros.filter(centro => centro.nombre?.toLowerCase().includes(target.value.toLowerCase()));
   }
 
   seleccionarCentro(centro: Centro){
