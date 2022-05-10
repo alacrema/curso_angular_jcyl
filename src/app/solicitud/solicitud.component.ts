@@ -10,13 +10,16 @@ export class SolicitudComponent implements OnInit {
 
   solicitud = {id: 1, nombre: "Marta", apellidos: "Al\u00e1iz Crespo"};
 
-  solicitudes ; // [{id: 1, nombre: "Marta", apellidos: "Al\u00e1iz Crespo"}, {id: 2, nombre: "Juan", apellidos: "Garcia Lopez"}, {id: 3, nombre: "Ana", apellidos: "Robles Sanz"}];
+  solicitudes: any ; // [{id: 1, nombre: "Marta", apellidos: "Al\u00e1iz Crespo"}, {id: 2, nombre: "Juan", apellidos: "Garcia Lopez"}, {id: 3, nombre: "Ana", apellidos: "Robles Sanz"}];
   invalido = false;
   fondo = 'yellow';
 
   constructor(private solicitudService: SolicitudService) {
     console.log('llamada al constructor');
-    this.solicitudes = solicitudService.getSolicitudes();
+    solicitudService.getSolicitudes().then(
+      (data: any) => this.solicitudes = data.items.map((x: any) => x.fields )
+      // console.log(data)
+    );
 
    }
 
@@ -30,7 +33,7 @@ export class SolicitudComponent implements OnInit {
    eliminarSolicitud(solicitud: any){
     console.log("==> Llamada al método eliminar");
     //this.solicitudes = this.solicitudes.filter(x => x.nombre != solicitud.nombre && x.apellidos != solicitud.apellidos);
-    this.solicitudes = this.solicitudes.filter(x => x.id != solicitud.id);
+    //this.solicitudes = this.solicitudes.filter(x => x.id != solicitud.id);
     console.log("solicitud.nombre = " + this.solicitud.nombre);
     console.log("solicitud.apellidos = " + this.solicitud.apellidos);
   }
@@ -55,8 +58,8 @@ export class SolicitudComponent implements OnInit {
   }
 
   enviar(solicitud: any){
-    solicitud.id = this.solicitudes.length+1;
-    this.solicitudes.push(solicitud);
+  //  solicitud.id = this.solicitudes.length+1;
+    //this.solicitudes.push(solicitud);
     console.log(this.solicitud);
   }
 
