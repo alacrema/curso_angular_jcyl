@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {Centro} from '../listado-centros/listado-centros.component'
 
 const variable = "Hola";
@@ -16,7 +17,9 @@ export class CentroComponent implements OnInit {
   @Input()
   centro?: Centro
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+    route.params.subscribe(x => console.log(x))
+   }
 
   ngOnInit(): void {
   }

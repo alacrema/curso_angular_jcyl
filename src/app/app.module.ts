@@ -13,6 +13,7 @@ import { FilaSolicitudComponent } from './fila-solicitud/fila-solicitud.componen
 
 let routes = [
   {path: '', component: SolicitudComponent},
+  {path: 'centro/:centroId', component: CentroComponent},
   {path: 'centros', component: ListadoCentrosComponent}
 ];
 

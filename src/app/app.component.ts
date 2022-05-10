@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-jcyl';
+
+  constructor(private router: Router){
+
+  }
+
+  navegarAlCentro(){
+      this.router.navigate(['centro', 'idCentro'])
+  }
+
 }
+
