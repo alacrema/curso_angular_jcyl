@@ -30,7 +30,7 @@
 
 <h2>Listado de solicitudes</h2>
 
-<div *ngFor="let solicitud of solicitudes">
+<div *ngFor="let solicitud of solicitudes$ | async">
   <app-fila-solicitud [solicitud]="solicitud" (solicitudEliminada)="eliminarSolicitud(solicitud)"></app-fila-solicitud>
 
 </div>
