@@ -1,3 +1,4 @@
+import { SolicitudModule } from './solicitud/solicitud.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,13 +21,11 @@ let routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    SolicitudComponent,
     CentroComponent,
-    ListadoCentrosComponent,
-    SelectorCentroComponent,
-    FilaSolicitudComponent
+    ListadoCentrosComponent
   ],
   imports: [
+    SolicitudModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
