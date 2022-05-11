@@ -23,3 +23,7 @@ input {
   font-weight: 600;
   width: 300px;
 }
+
+button[disabled=disabled], button:disabled {
+  background-color: aliceblue;
+}
