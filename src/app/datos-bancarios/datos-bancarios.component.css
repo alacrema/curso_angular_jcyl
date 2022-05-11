@@ -1,0 +1,25 @@
+label {
+  color: #336699;
+  font-weight: bold;
+  width: 130px;
+  float: left;
+
+}
+/*label:after { content: ": " }*/
+
+button {
+  padding: 10px;
+  border: 1px solid gray;
+  background-color:#336699;
+  border-radius: 5px;
+  font: inherit;
+  color: #FFFFFF;
+}
+
+input {
+  padding: 3px;
+  box-shadow: 3px 3px 5px grey;
+  font-size: 14px;
+  font-weight: 600;
+  width: 300px;
+}

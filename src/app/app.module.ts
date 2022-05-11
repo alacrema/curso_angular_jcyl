@@ -11,25 +11,30 @@ import { CentroComponent } from './centro/centro.component';
 import { ListadoCentrosComponent } from './listado-centros/listado-centros.component';
 import { SelectorCentroComponent } from './selector-centro/selector-centro.component';
 import { FilaSolicitudComponent } from './fila-solicitud/fila-solicitud.component';
+import { DatosBancariosComponent } from './datos-bancarios/datos-bancarios.component';
+import { FormsModule } from '@angular/forms';
 
 let routes = [
   {path: '', component: SolicitudComponent},
   {path: 'centro/:centroId', component: CentroComponent},
-  {path: 'centros', component: ListadoCentrosComponent}
+  {path: 'centros', component: ListadoCentrosComponent},
+  {path: 'datosBancarios', component: DatosBancariosComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     CentroComponent,
-    ListadoCentrosComponent
+    ListadoCentrosComponent,
+    DatosBancariosComponent
   ],
   imports: [
     SolicitudModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
