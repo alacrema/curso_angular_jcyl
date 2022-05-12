@@ -30,8 +30,12 @@ import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angula
 export class DatosBancariosComponent implements OnInit {
 
   formGroup: FormGroup;
+  sucursalGroup = new FormControl('0000', [Validators.required, this.miValidador])
   constructor(private formBuilder: FormBuilder) {
-    this.formGroup = formBuilder.group({entidad: new FormControl(''), sucursal: new FormControl('0000', [Validators.required, this.miValidador]), dc: '', cuenta: ''});
+    this.formGroup = formBuilder.group({entidad: new FormControl(''), sucursal: this.sucursalGroup , dc: '', cuenta: ''});
+
+    this.sucursalGroup.valueChanges.subscribe(x => console.log(x));
+
    }
 
   ngOnInit(): void {
