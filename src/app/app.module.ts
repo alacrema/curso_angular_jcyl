@@ -12,7 +12,7 @@ import { ListadoCentrosComponent } from './listado-centros/listado-centros.compo
 import { SelectorCentroComponent } from './selector-centro/selector-centro.component';
 import { FilaSolicitudComponent } from './fila-solicitud/fila-solicitud.component';
 import { DatosBancariosComponent } from './datos-bancarios/datos-bancarios.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 let routes = [
   {path: '', component: SolicitudComponent},
@@ -34,7 +34,8 @@ let routes = [
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

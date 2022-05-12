@@ -1,39 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-datos-bancarios',
   //templateUrl: './datos-bancarios.component.html',
   template: `
     <br/><br/>
-    <form (ngSubmit)="enviar(f)" #f="ngForm" >
+    <form [formGroup]="formGroup" >
       <label>Entidad</label>
-      <input name="entidad" ngModel required minlength="4" maxlength="4" />
+      <input name="entidad" required minlength="4" maxlength="4" formControlName="entidad" />
       <br/><br/>
       <label>Sucursal</label>
-      <input name="sucursal" ngModel required minlength="4" maxlength="4" />
+      <input name="sucursal" required minlength="4" maxlength="4" formControlName="sucursal" />
       <br/><br/>
       <label>DC</label>
-      <input name="dc" ngModel required minlength="2" maxlength="2" />
+      <input name="dc" required minlength="2" maxlength="2" formControlName="dc" />
       <br/><br/>
       <label>Cuenta</label>
-      <input name="cuenta" ngModel required minlength="10" maxlength="10" />
+      <input name="cuenta" required minlength="10" maxlength="10" formControlName="cuenta" />
       <br/><br/>
-      <button [disabled]="f.invalid">Enviar</button>
+      <button [disabled]="formGroup.invalid" (click)="enviar()" >Enviar</button>
     </form>
   `,
   styleUrls: ['./datos-bancarios.component.css']
 })
 export class DatosBancariosComponent implements OnInit {
 
-  constructor() { }
+  formGroup: FormGroup;
+  constructor(private formBuilder: FormBuilder) {
+    this.formGroup = formBuilder.group({entidad: new FormControl(''), sucursal: '0000', dc: '', cuenta: ''});
+   }
 
   ngOnInit(): void {
   }
 
 
-  enviar(f: NgForm){
-      console.log(f);
+  enviar(){
+      console.log(this.formGroup);
       // if(f.errors){
       //   console.log(f.errors);
       // }
