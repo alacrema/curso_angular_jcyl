@@ -5,7 +5,7 @@
  <p>
    <label >Nombre:</label>
    <br/>
-<input type="text" id="nombre" [value]="solicitud.nombre" (keyup)="cambiarNombre($event)" />
+<input [(ngModel)]="solicitud.nombre" />
  </p>
  <p>
    &nbsp;
@@ -14,7 +14,7 @@
 <div>
   <label>Apellidos:</label>
   <br/>
-  <input type="text" id="nombre"  [value]="solicitud.apellidos" (keyup)="cambiarApellidos($event)" />
+  <input  [(ngModel)]="solicitud.apellidos"  />
 
   <div *ngIf="getDisabled()">
     La longitud del nombre o los apellidos es inv&aacute;lida. Debe ser igual o superior a 3.
