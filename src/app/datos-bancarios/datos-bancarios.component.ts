@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-datos-bancarios',
@@ -19,6 +19,9 @@ import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
       <label>Cuenta</label>
       <input name="cuenta" required minlength="10" maxlength="10" formControlName="cuenta" />
       <br/><br/>
+      <div *ngIf="formGroup.invalid">
+          {{formGroup.controls['sucursal'].errors | json}}
+      </div>
       <button [disabled]="formGroup.invalid" (click)="enviar()" >Enviar</button>
     </form>
   `,
@@ -28,7 +31,7 @@ export class DatosBancariosComponent implements OnInit {
 
   formGroup: FormGroup;
   constructor(private formBuilder: FormBuilder) {
-    this.formGroup = formBuilder.group({entidad: new FormControl(''), sucursal: '0000', dc: '', cuenta: ''});
+    this.formGroup = formBuilder.group({entidad: new FormControl(''), sucursal: new FormControl('0000', [Validators.required, this.miValidador]), dc: '', cuenta: ''});
    }
 
   ngOnInit(): void {
@@ -40,6 +43,10 @@ export class DatosBancariosComponent implements OnInit {
       // if(f.errors){
       //   console.log(f.errors);
       // }
+  }
+
+  miValidador(formControl: FormControl){
+      return formControl.value === '0000' ? {error: 'valor incorrecto'} : null;
   }
 
 }
